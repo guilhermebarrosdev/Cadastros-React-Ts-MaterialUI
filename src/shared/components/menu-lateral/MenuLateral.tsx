@@ -47,7 +47,9 @@ const ListItemLink: React.FC<IListItemLinkProps> = ({
   );
 };
 
-export const MenuLateral: React.FC = ({ children }) => {
+export const MenuLateral: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
