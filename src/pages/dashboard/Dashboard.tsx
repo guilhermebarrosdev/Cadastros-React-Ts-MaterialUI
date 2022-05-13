@@ -1,13 +1,11 @@
-import { FerramentasDaListagem } from '../../shared/components';
+import { FerramentasDeDetalhes } from '../../shared/components';
 import { LayoutBasePage } from '../../shared/layouts/LayoutBasePage';
 
 export const Dashboard: React.FC = () => {
   return (
     <LayoutBasePage
       titulo="Página inicial"
-      barraDeFerramentas={
-        <FerramentasDaListagem mostrarInputBusca textoBotaoNovo="Nova" />
-      }
+      barraDeFerramentas={<FerramentasDeDetalhes />}
     >
       Testando
     </LayoutBasePage>
