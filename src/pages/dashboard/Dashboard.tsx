@@ -5,7 +5,13 @@ export const Dashboard: React.FC = () => {
   return (
     <LayoutBasePage
       titulo="Página inicial"
-      barraDeFerramentas={<FerramentasDeDetalhes mostrarBotaoSalvarEFechar />}
+      barraDeFerramentas={
+        <FerramentasDeDetalhes
+          mostrarBotaoNovo
+          mostrarBotaoSalvarEFechar
+          mostrarBotaoSalvarEFecharCarregando
+        />
+      }
     >
       Testando
     </LayoutBasePage>
