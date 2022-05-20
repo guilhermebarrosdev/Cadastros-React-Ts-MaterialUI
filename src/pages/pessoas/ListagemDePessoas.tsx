@@ -10,6 +10,7 @@ import {
   Paper,
   TableFooter,
   LinearProgress,
+  Pagination,
 } from '@mui/material';
 
 import { FerramentasDaListagem } from '../../shared/components';
@@ -33,11 +34,15 @@ export const ListagemDePessoas: React.FC = () => {
     return searchParams.get('busca') || '';
   }, [searchParams]);
 
+  const pagina = useMemo(() => {
+    return Number(searchParams.get('pagina')) || '1';
+  }, [searchParams]);
+
   useEffect(() => {
     setLoading(true);
 
     debounce(() => {
-      PessoasService.getAll(1, busca).then((result) => {
+      PessoasService.getAll(+pagina, busca).then((result) => {
         setLoading(false);
         if (result instanceof Error) alert(result.message);
         else {
@@ -47,7 +52,7 @@ export const ListagemDePessoas: React.FC = () => {
         }
       });
     });
-  }, [busca]);
+  }, [busca, pagina]);
 
   return (
     <>
@@ -59,7 +64,7 @@ export const ListagemDePessoas: React.FC = () => {
             textoBotaoNovo="Nova"
             textoDaBusca={busca}
             aoMudarTextoDaBusca={(texto) =>
-              setSearchParams({ busca: texto }, { replace: true })
+              setSearchParams({ busca: texto, pagina: '1' }, { replace: true })
             }
           />
         }
@@ -97,6 +102,24 @@ export const ListagemDePessoas: React.FC = () => {
                 <TableRow>
                   <TableCell colSpan={3}>
                     <LinearProgress variant="indeterminate" />
+                  </TableCell>
+                </TableRow>
+              )}
+              {totalCount > 0 && environment.LIMITE_DE_LINHAS && (
+                <TableRow>
+                  <TableCell colSpan={3}>
+                    <Pagination
+                      page={+pagina}
+                      count={Math.ceil(
+                        totalCount / environment.LIMITE_DE_LINHAS
+                      )}
+                      onChange={(event, page) =>
+                        setSearchParams(
+                          { busca, pagina: page.toString() },
+                          { replace: true }
+                        )
+                      }
+                    />
                   </TableCell>
                 </TableRow>
               )}
