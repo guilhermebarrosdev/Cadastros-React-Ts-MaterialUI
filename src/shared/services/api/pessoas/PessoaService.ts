@@ -1,5 +1,5 @@
+import { environment } from '../../../environments';
 import { Api } from '../axios-config';
-import { environment } from './../../../environments/index';
 
 export interface IListagemPessoa {
   id: number;
@@ -25,20 +25,24 @@ const getAll = async (
   filter = ''
 ): Promise<TPessoasComTotalCount | Error> => {
   try {
-    const urlRelativa = `/pessoas?_page=${page}&_limit=${environment.LIMITE_DE_LINHAS}&nomeCompleto_like${filter}`;
+    const urlRelativa = `/pessoas?_page=${page}&_limit=${environment.LIMITE_DE_LINHAS}&nomeCompleto_like=${filter}`;
+
     const { data, headers } = await Api.get(urlRelativa);
+
     if (data) {
       return {
         data,
-        totalCount: +headers['x-total-count'] || environment.LIMITE_DE_LINHAS,
+        totalCount: Number(
+          headers['x-total-count'] || environment.LIMITE_DE_LINHAS
+        ),
       };
     }
-    return new Error('Não foi possível obter os dados.');
+
+    return new Error('Erro ao listar os registros.');
   } catch (error) {
     console.error(error);
     return new Error(
-      (error as { message: string }).message ||
-        'Não foi possível obter os dados.'
+      (error as { message: string }).message || 'Erro ao listar os registros.'
     );
   }
 };
@@ -46,7 +50,11 @@ const getAll = async (
 const getById = async (id: number): Promise<IDetalhePessoa | Error> => {
   try {
     const { data } = await Api.get(`/pessoas/${id}`);
-    if (data) return data;
+
+    if (data) {
+      return data;
+    }
+
     return new Error('Erro ao consultar o registro.');
   } catch (error) {
     console.error(error);
@@ -61,7 +69,11 @@ const create = async (
 ): Promise<number | Error> => {
   try {
     const { data } = await Api.post<IDetalhePessoa>('/pessoas', dados);
-    if (data) return data.id;
+
+    if (data) {
+      return data.id;
+    }
+
     return new Error('Erro ao criar o registro.');
   } catch (error) {
     console.error(error);
@@ -96,10 +108,10 @@ const deleteById = async (id: number): Promise<void | Error> => {
   }
 };
 
-export const PessoasServices = {
+export const PessoasService = {
   getAll,
-  getById,
   create,
+  getById,
   updateById,
   deleteById,
 };

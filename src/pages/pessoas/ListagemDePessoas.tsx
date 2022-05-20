@@ -8,6 +8,8 @@ import {
   TableRow,
   TableCell,
   Paper,
+  TableFooter,
+  LinearProgress,
 } from '@mui/material';
 
 import { FerramentasDaListagem } from '../../shared/components';
@@ -15,8 +17,9 @@ import { LayoutBasePage } from '../../shared/layouts';
 import { useDebounce } from '../../shared/hooks';
 import {
   IListagemPessoa,
-  PessoasServices,
+  PessoasService,
 } from '../../shared/services/api/pessoas/PessoaService';
+import { environment } from '../../shared/environments';
 
 export const ListagemDePessoas: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -34,12 +37,12 @@ export const ListagemDePessoas: React.FC = () => {
     setLoading(true);
 
     debounce(() => {
-      PessoasServices.getAll(1, busca).then((result) => {
+      PessoasService.getAll(1, busca).then((result) => {
         setLoading(false);
         if (result instanceof Error) alert(result.message);
         else {
-          setRows(result.data);
           setTotalCount(result.totalCount);
+          setRows(result.data);
           console.log(result);
         }
       });
@@ -84,6 +87,20 @@ export const ListagemDePessoas: React.FC = () => {
                 </TableRow>
               ))}
             </TableBody>
+
+            {totalCount === 0 && !loading && (
+              <caption>{environment.LISTAGEM_VAZIA}</caption>
+            )}
+
+            <TableFooter>
+              {loading && (
+                <TableRow>
+                  <TableCell colSpan={3}>
+                    <LinearProgress variant="indeterminate" />
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableFooter>
           </Table>
         </TableContainer>
       </LayoutBasePage>
