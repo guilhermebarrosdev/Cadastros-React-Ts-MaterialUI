@@ -181,7 +181,6 @@ export const FerramentasDeDetalhes: React.FC<IFerramentasDeDetalhesProps> = ({
           >
             Voltar
           </Typography>
-          Voltar
         </Button>
       )}
       {mostrarBotaoVoltarCarregando && <Skeleton width={108} height={60} />}

@@ -83,6 +83,7 @@ export const ListagemDePessoas: React.FC = () => {
           mostrarInputBusca
           textoDaBusca={busca}
           textoBotaoNovo="Nova"
+          aoClicarEmNovo={() => navigate('/pessoas/detalhe/nova')}
           aoMudarTextoDaBusca={(texto) =>
             setSearchParams({ busca: texto, pagina: '1' }, { replace: true })
           }
@@ -138,6 +139,7 @@ export const ListagemDePessoas: React.FC = () => {
               <TableRow>
                 <TableCell colSpan={3}>
                   <Pagination
+                    shape="rounded"
                     page={pagina}
                     count={Math.ceil(totalCount / environment.LIMITE_DE_LINHAS)}
                     onChange={(event, newPage) =>
