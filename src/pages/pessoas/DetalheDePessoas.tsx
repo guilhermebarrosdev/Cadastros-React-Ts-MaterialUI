@@ -17,6 +17,7 @@ interface IFormData {
 
 export const DetalheDePessoas: React.FC = () => {
   const { id = 'nova' } = useParams<'id'>();
+
   const navigate = useNavigate();
   const formRef = useRef<FormHandles>(null);
 
