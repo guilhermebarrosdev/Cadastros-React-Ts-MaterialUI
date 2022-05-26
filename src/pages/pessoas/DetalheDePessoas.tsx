@@ -7,6 +7,7 @@ import { VTextField } from '../../shared/forms';
 import { LayoutBasePage } from '../../shared/layouts';
 import { PessoasService } from '../../shared/services/api/pessoas/PessoaService';
 import { FormHandles } from '@unform/core';
+import { Box, Grid, LinearProgress, Paper, Typography } from '@mui/material';
 
 interface IFormData {
   nomeCompleto: string;
@@ -90,9 +91,59 @@ export const DetalheDePessoas: React.FC = () => {
       }
     >
       <Form ref={formRef} onSubmit={handleSave}>
-        <VTextField placeholder="Nome Completo" name="nomeCompleto" />
-        <VTextField placeholder="Email" name="email" />
-        <VTextField placeholder="Cidade" name="cidadeId" />
+        <Box
+          margin={1}
+          display="flex"
+          flexDirection="column"
+          component={Paper}
+          variant="outlined"
+        >
+          <Grid container direction="column" padding={2} spacing={2}>
+            {isLoading && (
+              <Grid item>
+                <LinearProgress variant="indeterminate" />
+              </Grid>
+            )}
+
+            <Grid item>
+              <Typography variant="h6">Geral</Typography>
+            </Grid>
+
+            <Grid container item direction="row" spacing={2}>
+              <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
+                <VTextField
+                  fullWidth
+                  name="nomeCompleto"
+                  disabled={isLoading}
+                  label="Nome completo"
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </Grid>
+            </Grid>
+
+            <Grid container item direction="row" spacing={2}>
+              <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
+                <VTextField
+                  fullWidth
+                  name="email"
+                  label="Email"
+                  disabled={isLoading}
+                />
+              </Grid>
+            </Grid>
+
+            <Grid container item direction="row" spacing={2}>
+              <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
+                <VTextField
+                  fullWidth
+                  label="Cidade"
+                  name="cidadeId"
+                  disabled={isLoading}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+        </Box>
 
         {/* {['casa', 'trabalho', 'outro'].map((_, index) => (
           <Scope key="" path={`endereco[${index}]`}>
