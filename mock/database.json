@@ -53,6 +53,12 @@
       "cidadeId": 1,
       "email": "alfredo2@gmail.com",
       "nomeCompleto": "Alfredo2 Silva"
+    },
+    {
+      "id": 11,
+      "nomeCompleto": "Meryelle Souza Moreira",
+      "email": "merysouza@gmail.com",
+      "cidadeId": "1"
     }
   ]
 }

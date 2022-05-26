@@ -10,7 +10,7 @@ import { FormHandles } from '@unform/core';
 
 interface IFormData {
   nomeCompleto: string;
-  cidadeId: string;
+  cidadeId: number;
   email: string;
 }
 
@@ -32,7 +32,7 @@ export const DetalheDePessoas: React.FC = () => {
           navigate('/pessoas');
         } else {
           setName(result.nomeCompleto);
-          console.log(result);
+          formRef.current?.setData(result);
         }
       });
     }
@@ -52,7 +52,24 @@ export const DetalheDePessoas: React.FC = () => {
   };
 
   const handleSave = (dados: IFormData) => {
-    console.log(dados);
+    setIsLoading(true);
+    if (id === 'nova') {
+      PessoasService.create(dados).then((result) => {
+        setIsLoading(false);
+        if (result instanceof Error) {
+          alert(result.message);
+        } else {
+          navigate(`/pessoa/detalhe/${result}`);
+        }
+      });
+    } else {
+      PessoasService.updateById(+id, { id: +id, ...dados }).then((result) => {
+        setIsLoading(false);
+        if (result instanceof Error) {
+          alert(result.message);
+        }
+      });
+    }
   };
 
   return (
@@ -73,9 +90,9 @@ export const DetalheDePessoas: React.FC = () => {
       }
     >
       <Form ref={formRef} onSubmit={handleSave}>
-        <VTextField name="nomeCompleto" />
-        <VTextField name="email" />
-        <VTextField name="cidadeId" />
+        <VTextField placeholder="Nome Completo" name="nomeCompleto" />
+        <VTextField placeholder="Email" name="email" />
+        <VTextField placeholder="Cidade" name="cidadeId" />
 
         {/* {['casa', 'trabalho', 'outro'].map((_, index) => (
           <Scope key="" path={`endereco[${index}]`}>
@@ -86,8 +103,6 @@ export const DetalheDePessoas: React.FC = () => {
             <VTextField name="pais" />
           </Scope>
         ))} */}
-
-        <button type="submit">submit</button>
       </Form>
     </LayoutBasePage>
   );
