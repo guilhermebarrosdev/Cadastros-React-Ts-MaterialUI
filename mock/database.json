@@ -3,14 +3,14 @@
     {
       "id": 1,
       "nomeCompleto": "Juca Silva",
-      "cidadeId": "Juca@gmail.com",
-      "email": 1
+      "email": 1,
+      "cidadeId": "Juca@gmail.com"
     },
     {
       "id": 2,
-      "cidadeId": 1,
+      "nomeCompleto": "Maria Barros",
       "email": "maria@gmail.com",
-      "nomeCompleto": "Maria Silva"
+      "cidadeId": 1
     },
     {
       "id": 3,
@@ -59,6 +59,12 @@
       "nomeCompleto": "Meryelle Souza Moreira",
       "email": "merysouza@gmail.com",
       "cidadeId": "1"
+    },
+    {
+      "nomeCompleto": "Guilherme Barros",
+      "email": "wingui3@gmail.com",
+      "cidadeId": "2",
+      "id": 12
     }
   ]
 }

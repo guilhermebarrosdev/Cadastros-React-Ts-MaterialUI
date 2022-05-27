@@ -69,7 +69,6 @@ export const FerramentasDeDetalhes: React.FC<IFerramentasDeDetalhesProps> = ({
       alignItems="center"
       height={theme.spacing(5)}
       component={Paper}
-      justifyContent="space-between"
     >
       {mostrarBotaoSalvar && !mostrarBotaoSalvarCarregando && (
         <Button

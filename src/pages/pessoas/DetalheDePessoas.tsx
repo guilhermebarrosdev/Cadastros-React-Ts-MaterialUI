@@ -1,13 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Form } from '@unform/web';
+import { Box, Grid, LinearProgress, Paper, Typography } from '@mui/material';
 
 import { FerramentasDeDetalhes } from '../../shared/components';
-import { VTextField } from '../../shared/forms';
+import { VTextField, VForm } from '../../shared/forms';
 import { LayoutBasePage } from '../../shared/layouts';
 import { PessoasService } from '../../shared/services/api/pessoas/PessoaService';
-import { FormHandles } from '@unform/core';
-import { Box, Grid, LinearProgress, Paper, Typography } from '@mui/material';
+import { useVForm } from '../../shared/hooks';
 
 interface IFormData {
   nomeCompleto: string;
@@ -19,7 +18,7 @@ export const DetalheDePessoas: React.FC = () => {
   const { id = 'nova' } = useParams<'id'>();
 
   const navigate = useNavigate();
-  const formRef = useRef<FormHandles>(null);
+  const { formRef, save, isSaveAndClose, saveAndClose } = useVForm();
 
   const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState('');
@@ -36,6 +35,12 @@ export const DetalheDePessoas: React.FC = () => {
           setName(result.nomeCompleto);
           formRef.current?.setData(result);
         }
+      });
+    } else {
+      formRef.current?.setData({
+        nomeCompleto: '',
+        cidadeId: '',
+        email: '',
       });
     }
   }, [id]);
@@ -61,7 +66,11 @@ export const DetalheDePessoas: React.FC = () => {
         if (result instanceof Error) {
           alert(result.message);
         } else {
-          navigate(`/pessoa/detalhe/${result}`);
+          if (isSaveAndClose()) {
+            navigate('/pessoas');
+          } else {
+            navigate(`/pessoa/detalhe/${result}`);
+          }
         }
       });
     } else {
@@ -69,6 +78,10 @@ export const DetalheDePessoas: React.FC = () => {
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
+        } else {
+          if (isSaveAndClose()) {
+            navigate('/pessoas');
+          }
         }
       });
     }
@@ -83,15 +96,15 @@ export const DetalheDePessoas: React.FC = () => {
           mostrarBotaoSalvarEFechar
           mostrarBotaoApagar={id !== 'nova'}
           mostrarBotaoNovo={id !== 'nova'}
-          aoClicarEmSalvar={() => formRef.current?.submitForm()}
-          aoClicarEmSalvarEFechar={() => formRef.current?.submitForm()}
+          aoClicarEmSalvar={save}
+          aoClicarEmSalvarEFechar={saveAndClose}
           aoClicarEmApagar={() => handleDelete(+id)}
           aoClicarEmNovo={() => navigate('/pessoas/detalhe/nova')}
           aoClicarEmVoltar={() => navigate('/pessoas')}
         />
       }
     >
-      <Form ref={formRef} onSubmit={handleSave}>
+      <VForm ref={formRef} onSubmit={handleSave}>
         <Box
           margin={1}
           display="flex"
@@ -145,8 +158,13 @@ export const DetalheDePessoas: React.FC = () => {
             </Grid>
           </Grid>
         </Box>
+      </VForm>
+    </LayoutBasePage>
+  );
+};
 
-        {/* {['casa', 'trabalho', 'outro'].map((_, index) => (
+{
+  /* {['casa', 'trabalho', 'outro'].map((_, index) => (
           <Scope key="" path={`endereco[${index}]`}>
             <VTextField name="rua" />
             <VTextField name="numero" />
@@ -154,8 +172,5 @@ export const DetalheDePessoas: React.FC = () => {
             <VTextField name="cidade" />
             <VTextField name="pais" />
           </Scope>
-        ))} */}
-      </Form>
-    </LayoutBasePage>
-  );
-};
+        ))} */
+}
