@@ -3,8 +3,8 @@
     {
       "id": 1,
       "nomeCompleto": "Juca Silva",
-      "email": 1,
-      "cidadeId": "Juca@gmail.com"
+      "email": "Juca@gmail.com",
+      "cidadeId": 1
     },
     {
       "id": 2,
