@@ -59,12 +59,12 @@
       "nomeCompleto": "Meryelle Souza Moreira",
       "email": "merysouza@gmail.com",
       "cidadeId": "1"
-    },
+    }
+  ],
+  "cidades": [
     {
-      "nomeCompleto": "Guilherme Barros",
-      "email": "wingui3@gmail.com",
-      "cidadeId": "2",
-      "id": 12
+      "nome": "Campinas",
+      "id": 1
     }
   ]
 }
