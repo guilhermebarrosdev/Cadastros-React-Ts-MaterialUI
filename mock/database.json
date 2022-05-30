@@ -59,12 +59,38 @@
       "nomeCompleto": "Meryelle Souza Moreira",
       "email": "merysouza@gmail.com",
       "cidadeId": "1"
+    },
+    {
+      "nomeCompleto": "Lucas Souza",
+      "email": "lucas@souza.com",
+      "cidadeId": 3,
+      "id": 12
     }
   ],
   "cidades": [
     {
       "nome": "Campinas",
       "id": 1
+    },
+    {
+      "nome": "São Paulo",
+      "id": 2
+    },
+    {
+      "nome": "Hortolandia",
+      "id": 3
+    },
+    {
+      "nome": "Paulínia",
+      "id": 4
+    },
+    {
+      "nome": "Jaguariúna",
+      "id": 5
+    },
+    {
+      "nome": "Sumaré",
+      "id": 6
     }
   ]
 }

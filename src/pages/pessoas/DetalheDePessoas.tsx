@@ -8,7 +8,7 @@ import { VTextField, VForm, IVFormErrors } from '../../shared/forms';
 import { LayoutBasePage } from '../../shared/layouts';
 import { PessoasService } from '../../shared/services/api/pessoas/PessoaService';
 import { useVForm } from '../../shared/hooks';
-
+import { AutoCompleteCidade } from './components/AutoCompleteCidade';
 interface IFormData {
   nomeCompleto: string;
   cidadeId: number;
@@ -46,7 +46,7 @@ export const DetalheDePessoas: React.FC = () => {
     } else {
       formRef.current?.setData({
         nomeCompleto: '',
-        cidadeId: '',
+        cidadeId: undefined,
         email: '',
       });
     }
@@ -169,12 +169,7 @@ export const DetalheDePessoas: React.FC = () => {
 
             <Grid container item direction="row" spacing={2}>
               <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
-                <VTextField
-                  fullWidth
-                  label="Cidade"
-                  name="cidadeId"
-                  disabled={isLoading}
-                />
+                <AutoCompleteCidade isExternalLoading={isLoading} />
               </Grid>
             </Grid>
           </Grid>
