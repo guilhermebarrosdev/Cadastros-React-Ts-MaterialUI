@@ -92,5 +92,8 @@
       "nome": "Sumaré",
       "id": 6
     }
-  ]
+  ],
+  "auth": {
+    "accessToken": "asd"
+  }
 }

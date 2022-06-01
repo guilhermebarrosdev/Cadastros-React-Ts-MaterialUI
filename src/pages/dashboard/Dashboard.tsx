@@ -42,7 +42,7 @@ export const Dashboard = () => {
       barraDeFerramentas={<FerramentasDaListagem mostrarBotaoNovo={false} />}
     >
       <Box width="100%" display="flex">
-        <Grid container margin={2}>
+        <Grid container margin={1}>
           <Grid item container spacing={2}>
             <Grid item xs={12} md={6} lg={4} xl={3}>
               <Card>
