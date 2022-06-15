@@ -9,17 +9,20 @@ Responsiva com temas claro e escuro.</p>
 
 <strong><a  href="https://curso-react-ts-material-ui.vercel.app/pagina-inicial"  target="_blank">Deploy</a></strong>
 
-<img  src="/pagina-inicial.png"  alt="Página inicial"  width="80%"/>
-
 ### 💻 Previews:
 
 #### - Preview 1:
 
-<img  src="/preview1.gif?raw=true"  width="100%">
+<img  src="/preview1-3x.gif?raw=true"  width="80%">
 
 #### - Preview 2:
 
-<img  src="/preview-2.gif?raw=true"  width="100%">
+<img  src="/preview2-4x.gif?raw=true"  width="80%">
+
+#### - Preview 3 mobile view:
+
+<img  src="/preview3-5x.gif?raw=true"  width="40%">
+
 
 <h2>🚀 Tecnologias</h2>
 
@@ -34,32 +37,20 @@ Responsiva com temas claro e escuro.</p>
 <li><a  href="https://vitejs.dev/"  target="_blank">Vite</a></li>
 <li><a  href="https://www.npmjs.com/package/yup"  target="_blank">yup</a></li>
 <li><a  href="https://eslint.org/"  target="_blank">eslint</a></li>
-</ul>
+</ul> 
 
 <br>
 
 <h2>ℹ️ Como utilizar</h2>
+    Clone esse repositório
+    $ git clone https://github.com/guilhermebarrosdev/Curso-React-Ts-MaterialUi.git
 
-Clone esse repositório
+    Instalar dependências
+    $ yarn install
 
-$ git clone https://github.com/guilhermebarrosdev/Curso-React-Ts-MaterialUi.git
-
-<hr>
-
-Instalar dependências
-
-$ yarn install
-
-  <hr>
-
-Inicie o projeto
-
-$ yarn dev
-$ yarn mock
-(Simultâneos em abas diferentes no terminal)
-
-<hr>
-
+    Inicie o projeto
+    $ yarn dev
+    $ yarn mock (simultâneos em abas diferentes no terminal)
 <br>
 
 Desenvolvido por <a  href="https://github.com/guilhermebarrosdev/"  target="_blank">Guilherme Barros</a>.
