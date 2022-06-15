@@ -61,10 +61,10 @@
       "cidadeId": "1"
     },
     {
-      "nomeCompleto": "Lucas Souza",
-      "email": "lucas@souza.com",
-      "cidadeId": 3,
-      "id": 12
+      "id": 12,
+      "nomeCompleto": "Lucas Barros",
+      "email": "lucas@barros.com",
+      "cidadeId": 7
     }
   ],
   "cidades": [
@@ -91,6 +91,10 @@
     {
       "nome": "Sumaré",
       "id": 6
+    },
+    {
+      "nome": "Fortaleza",
+      "id": 7
     }
   ],
   "auth": {
