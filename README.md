@@ -3,7 +3,6 @@
 <h4>Criação da aplicação de Cadastro de Pessoas e Cidades.</h4>
 <p>CRUD de Pessoas e Cidades  com login, listagem, criação, edição e exclusão.<br>
 Responsiva com temas claro e escuro.</p> 
-</br>
 
 ### 🔽 Veja funcionando:
 
@@ -22,7 +21,6 @@ Responsiva com temas claro e escuro.</p>
 #### - Preview 3 mobile view:
 
 <img  src="/preview3-5x.gif?raw=true"  width="40%">
-
 
 <h2>🚀 Tecnologias</h2>
 
