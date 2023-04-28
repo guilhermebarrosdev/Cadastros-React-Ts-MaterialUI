@@ -51,4 +51,4 @@ Responsiva com temas claro e escuro.</p>
     $ yarn mock (simultâneos em abas diferentes no terminal)
 <br>
 
-Desenvolvido por <a  href="https://github.com/guilhermebarrosdev/"  target="_blank">Guilherme Barros</a>.
+© Desenvolvido por <a  href="https://github.com/guilhermebarrosdev/"  target="_blank">Guilherme Barros</a>.
